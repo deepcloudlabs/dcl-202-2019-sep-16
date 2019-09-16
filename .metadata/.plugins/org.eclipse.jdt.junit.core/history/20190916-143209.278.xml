@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AccountTest" project="core-banking" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.banking.entity.AccountTest" time="0.0" displayname="AccountTest" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]">
+    <testcase name="withdraw_overAmount" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="withdraw_overAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:withdraw_overAmount()]"/>
+    <testcase name="withdraw_negativeAmount" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="withdraw_negativeAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:withdraw_negativeAmount()]"/>
+  </testsuite>
+</testrun>

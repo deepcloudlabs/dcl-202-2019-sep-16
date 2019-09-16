@@ -1,0 +1,24 @@
+package com.example.banking.app;
+
+import com.example.banking.entity.Account;
+
+// Ctrl+Shift+F
+public class BankApp {
+	public static void main(String[] args) {
+		Account acc;
+		
+		acc = new Account("TR1", 1_000);
+		System.out.println(acc.getBalance());
+		acc.deposit(250);
+		System.out.println(acc.getBalance());
+		acc.withdraw(750);
+		System.out.println(acc.getBalance());
+		acc.withdraw(1_000_000);
+		System.out.println(acc.getBalance());
+	}
+}
+
+
+
+
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AccountTest" project="core-banking" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.banking.entity.AccountTest" time="0.001" displayname="AccountTest" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]">
+    <testcase name="withdraw_overAmount" classname="com.example.banking.entity.AccountTest" time="0.001" displayname="withdraw_overAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:withdraw_overAmount()]"/>
+    <testcase name="deposit_negativeAmount" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="deposit_negativeAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:deposit_negativeAmount()]"/>
+    <testcase name="withdraw_all" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="withdraw_all()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:withdraw_all()]"/>
+    <testcase name="deposit_positiveAmount" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="deposit_positiveAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:deposit_positiveAmount()]"/>
+    <testcase name="withdraw_negativeAmount" classname="com.example.banking.entity.AccountTest" time="0.0" displayname="withdraw_negativeAmount()" uniqueid="[engine:junit-jupiter]/[class:com.example.banking.entity.AccountTest]/[method:withdraw_negativeAmount()]"/>
+  </testsuite>
+</testrun>

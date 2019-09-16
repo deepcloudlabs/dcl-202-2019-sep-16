@@ -1,0 +1,10 @@
+package com.example;
+
+public class StudyFloatingPoint {
+
+	public static void main(String[] args) {
+         float x = 3.1415F; // 4-byte
+         double y = 3.1415; // 8-byte
+	}
+
+}

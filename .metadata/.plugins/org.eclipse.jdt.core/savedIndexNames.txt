@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+C:\stage\var\workspace\dcl\dcl-202\2019\sep-16\.metadata\.plugins\org.eclipse.jdt.core
+1014292508.index
+2748767386.index
+4247330806.index
+3825082505.index
+3701753672.index
+1619714261.index
+4253956872.index
+3430046805.index
+4012112393.index
+333464550.index
+1222818463.index
+442103575.index
+960780873.index
+4293292732.index
+2028649311.index
+4237658279.index

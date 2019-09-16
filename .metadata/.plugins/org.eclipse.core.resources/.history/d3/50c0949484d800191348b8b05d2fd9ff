@@ -1,0 +1,12 @@
+package com.example;
+
+public class StudyStringImmutability {
+
+	public static void main(String[] args) {
+		String name = "jack bauer";
+		name.toUpperCase();
+		System.out.println(name);
+
+	}
+
+}

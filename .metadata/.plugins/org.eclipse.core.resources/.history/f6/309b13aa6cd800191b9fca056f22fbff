@@ -1,0 +1,8 @@
+package com.example.banking.app;
+
+// Ctrl+Shift+F
+public class BankApp {
+	public static void main(String[] args) {
+		Account acc;
+	}
+}

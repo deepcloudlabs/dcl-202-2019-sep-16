@@ -1,0 +1,11 @@
+package com.example;
+
+public class StudyChar {
+
+	public static void main(String[] args) {
+		char c = 'x'; // 2-byte
+		System.out.println("c= "+(char)(c+1));
+        
+	}
+
+}
