@@ -7,13 +7,28 @@ package com.example.banking.entity;
 public class Account {
 	// attribute, field, state
 	// instance variable
+	private static int numOfAccounts;
 	private final String iban;
-    double balance;
+	protected double balance;
+	protected AccountStatus status = AccountStatus.ACTIVE;
 
 	// constructor
 	public Account(String iban, double balance) {
 		this.iban = iban;
 		this.balance = balance;
+		numOfAccounts++;
+	}
+
+	public static int getNumOfAccounts() {
+		return numOfAccounts;
+	}
+
+	public AccountStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AccountStatus status) {
+		this.status = status;
 	}
 
 	public String getIban() {

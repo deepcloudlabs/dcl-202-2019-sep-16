@@ -13,7 +13,7 @@ public class Customer {
 	private String fullName;
 	private List<Account> accounts;
 
-	public Customer(String identityNo, String fullName) {
+	public Customer(final String identityNo,final String fullName) {
 		this.identityNo = identityNo;
 		this.fullName = fullName;
 		this.accounts = new ArrayList<>();
@@ -27,23 +27,23 @@ public class Customer {
 		return fullName;
 	}
 
-	public void addAccount(Account acc) {
+	public final void addAccount(Account acc) {
        accounts.add(acc);		
 	}
-	public int getNumberOfAccounts() {
+	public final int getNumberOfAccounts() {
 		return accounts.size();
 	}
-	public Account getAccount(int index) {
+	public final Account getAccount(final int index) {
 		return accounts.get(index);
 	}
-	public Optional<Account> getAccount(String iban) {
+	public final Optional<Account> getAccount(final String iban) {
 		for(Account acc: accounts) {
 			if (acc.getIban().equals(iban))
 				return Optional.of(acc);
 		}
 		return Optional.empty();
 	}
-	public Optional<Account> removeAccount(String iban) {
+	public final Optional<Account> removeAccount(final String iban) {
 		Optional<Account> opt = getAccount(iban);
 		opt.ifPresent( acc -> accounts.remove(acc));
 		return opt;
@@ -54,7 +54,7 @@ public class Customer {
 		return "Customer [identityNo=" + identityNo + ", fullName=" + fullName + ", accounts=" + accounts + "]";
 	}
 
-	public double getTotalBalance() {
+	public final double getTotalBalance() {
 		double total = 0.;
 		for (Account acc: accounts)
 			total += acc.getBalance();

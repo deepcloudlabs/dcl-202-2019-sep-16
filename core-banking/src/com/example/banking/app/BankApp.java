@@ -12,6 +12,8 @@ import com.example.banking.entity.Customer;
 public class BankApp {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
+		System.out.println("Total number of accounts: "
+	                    +Account.getNumOfAccounts());
 		Bank garanti = new Bank(1, "Garanti BBVA");
 		Customer jack = garanti.createCustomer("1", "Jack Bauer");
 		jack.addAccount(new Account("TR1", 1_000));
@@ -24,5 +26,6 @@ public class BankApp {
 		kate.addAccount(new CheckingAccount("TR6", 6_000, 1_000));
 		double totalBalance = garanti.getTotalBalance();
 		System.out.println("Total balance: " + totalBalance);
+		System.out.println("Total number of accounts: "+Account.getNumOfAccounts());
 	}
 }
