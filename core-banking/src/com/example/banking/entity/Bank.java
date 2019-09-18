@@ -1,14 +1,18 @@
 package com.example.banking.entity;
 
+import static java.util.Objects.isNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import com.example.banking.service.TransferService;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
-public final class Bank {
+public final class Bank implements TransferService {
 	private final int id;
 	private String name;
 	private List<Customer> customers;
@@ -66,6 +70,28 @@ public final class Bank {
 		return customers.stream()
 				        .mapToDouble(Customer::getTotalBalance)
 				        .sum();
+	}
+
+	@Override
+	public boolean transfer(String fromIban, String toIban, double amount) {
+		Account from=getAccount(fromIban);
+		if (isNull(from)) return false;
+		Account to=getAccount(toIban);
+		if (isNull(to)) return false; 
+		if (from==to) return false;
+		if( from.withdraw(amount) ) {
+			return to.deposit(amount);
+		} 
+		return false;
+	}
+	public Account getAccount(String iban) {
+		for (Customer customer : customers) {
+		    Optional<Account> account = 
+				customer.getAccount(iban);
+		    if (account.isPresent())
+		    	return account.get();
+		}
+		return null;
 	}
 }
 

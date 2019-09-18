@@ -4,6 +4,7 @@ import com.example.banking.entity.Account;
 import com.example.banking.entity.Bank;
 import com.example.banking.entity.CheckingAccount;
 import com.example.banking.entity.Customer;
+import com.example.banking.service.TransferService;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
@@ -27,5 +28,17 @@ public class BankApp {
 		double totalBalance = garanti.getTotalBalance();
 		System.out.println("Total balance: " + totalBalance);
 		System.out.println("Total number of accounts: "+Account.getNumOfAccounts());
+		TransferService srv = garanti;
+		System.out.println(garanti.getAccount("TR2"));
+		System.out.println(garanti.getAccount("TR6"));
+		srv.transfer("TR2", "TR6", 500);
+		System.out.println(garanti.getAccount("TR2"));
+		System.out.println(garanti.getAccount("TR6"));
 	}
 }
+
+
+
+
+
+
