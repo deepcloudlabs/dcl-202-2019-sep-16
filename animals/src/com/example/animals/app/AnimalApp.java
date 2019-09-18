@@ -38,7 +38,8 @@ public class AnimalApp {
 		           .map( animal -> (Pet) animal)
 		           .filter( pet -> pet.getName().equals("Jaws"))
 		           .findFirst()
-		           .ifPresent(System.out::println);
+		           .ifPresent( 
+		        		   pet -> System.out.println(((Animal)pet).getLegs()));
 		
 	}
 
