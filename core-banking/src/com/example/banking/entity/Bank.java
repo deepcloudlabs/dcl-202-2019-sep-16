@@ -3,7 +3,9 @@ package com.example.banking.entity;
 import static java.util.Objects.isNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.example.banking.service.TransferService;
@@ -16,11 +18,13 @@ public final class Bank implements TransferService {
 	private final int id;
 	private String name;
 	private List<Customer> customers;
+	private Map<String,Customer> customerMap;
 
 	public Bank(final int id,final String name) {
 		this.id = id;
 		this.name = name;
 		customers = new ArrayList<>();
+		customerMap = new HashMap<>();
 	}
 
 	public String getName() {
@@ -38,6 +42,7 @@ public final class Bank implements TransferService {
 	public Customer createCustomer(final String identityNo,final String fullName) {
 		Customer cust = new Customer(identityNo, fullName);
 		customers.add(cust);
+		customerMap.put(identityNo,cust);
 		return cust;
 	}
 
@@ -51,10 +56,13 @@ public final class Bank implements TransferService {
 //				return Optional.of(cust);
 //		}
 //		return Optional.empty();
-		return customers.stream()
-		        .filter(cust -> cust.getIdentityNo()
-		        		            .equals(identityNo))
-		        .findFirst();
+//		return customers.stream()
+//		        .filter(cust -> cust.getIdentityNo()
+//		        		            .equals(identityNo))
+//		        .findFirst();
+		return Optional.ofNullable(
+				 customerMap.get(identityNo)
+			  );
 	}
 
 	public int getNumberOfCustomers() {
