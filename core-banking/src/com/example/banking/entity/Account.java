@@ -40,26 +40,27 @@ public class Account {
 	}
 
 	// business method
-	public boolean withdraw(double amount) {
-		System.out.println("Account::withdraw");
+	public void withdraw(double amount) throws InsufficientBalanceException {
 		// validation
 		if (amount <= 0)
-			return false;
+			throw new IllegalArgumentException(
+					"amount must be positive!");
 		// business rule
 		if (amount > balance)
-			return false;
+			throw new InsufficientBalanceException(
+					"Your balance does not cover your expenses!",
+					amount-balance);
 		// shortcut:
 		// balance = balance - amount;
 		balance -= amount; // business logic
-		return true;
 	}
 
-	public boolean deposit(double amount) {
+	public void deposit(double amount) {
 		// validation
 		if (amount <= 0)
-			return false;
+			throw new IllegalArgumentException(
+					                 "amount must be positive!");
 		balance += amount; // business logic
-		return true;
 	}
 
 	@Override

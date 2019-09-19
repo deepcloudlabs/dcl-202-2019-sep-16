@@ -1,7 +1,5 @@
 package com.example.banking.entity;
 
-import static java.util.Objects.isNull;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,9 +16,9 @@ public final class Bank implements TransferService {
 	private final int id;
 	private String name;
 	private List<Customer> customers;
-	private Map<String,Customer> customerMap;
+	private Map<String, Customer> customerMap;
 
-	public Bank(final int id,final String name) {
+	public Bank(final int id, final String name) {
 		this.id = id;
 		this.name = name;
 		customers = new ArrayList<>();
@@ -39,10 +37,10 @@ public final class Bank implements TransferService {
 		return id;
 	}
 
-	public Customer createCustomer(final String identityNo,final String fullName) {
+	public Customer createCustomer(final String identityNo, final String fullName) {
 		Customer cust = new Customer(identityNo, fullName);
 		customers.add(cust);
-		customerMap.put(identityNo,cust);
+		customerMap.put(identityNo, cust);
 		return cust;
 	}
 
@@ -60,9 +58,7 @@ public final class Bank implements TransferService {
 //		        .filter(cust -> cust.getIdentityNo()
 //		        		            .equals(identityNo))
 //		        .findFirst();
-		return Optional.ofNullable(
-				 customerMap.get(identityNo)
-			  );
+		return Optional.ofNullable(customerMap.get(identityNo));
 	}
 
 	public int getNumberOfCustomers() {
@@ -75,39 +71,23 @@ public final class Bank implements TransferService {
 //			total += cust.getTotalBalance();
 //		}			
 //		return total;
-		return customers.stream()
-				        .mapToDouble(Customer::getTotalBalance)
-				        .sum();
+		return customers.stream().mapToDouble(Customer::getTotalBalance).sum();
 	}
 
 	@Override
-	public boolean transfer(String fromIban, String toIban, double amount) {
-		Account from=getAccount(fromIban);
-		if (isNull(from)) return false;
-		Account to=getAccount(toIban);
-		if (isNull(to)) return false; 
-		if (from==to) return false;
-		if( from.withdraw(amount) ) {
-			return to.deposit(amount);
-		} 
-		return false;
+	public void transfer(String fromIban, String toIban, double amount) throws InsufficientBalanceException {
+		Account from = getAccount(fromIban);
+		Account to = getAccount(toIban);
+		from.withdraw(amount);
+		to.deposit(amount);
 	}
+
 	public Account getAccount(String iban) {
 		for (Customer customer : customers) {
-		    Optional<Account> account = 
-				customer.getAccount(iban);
-		    if (account.isPresent())
-		    	return account.get();
+			Optional<Account> account = customer.getAccount(iban);
+			if (account.isPresent())
+				return account.get();
 		}
-		return null;
+		throw new IllegalArgumentException("Cannot find account!");
 	}
 }
-
-
-
-
-
-
-
-
-
