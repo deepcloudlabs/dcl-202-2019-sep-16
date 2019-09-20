@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -21,6 +22,14 @@ public class ParallelArraySum {
 		for (int i=0;i<ARRAY_SIZE;++i)
 			array[i]= i;
 	}
+	public static void parallelStreamSum() {
+	     long sum = Arrays.stream(array)
+	    		           .parallel()
+	    		           .boxed()
+	    		           .mapToLong(Integer::longValue)
+	    		          .sum();
+	     System.out.println("parallel stream sum: "+sum); 
+	}
 	public static void serialSum() {
 		long begin = System.currentTimeMillis();
 		long sum =0;
@@ -31,6 +40,7 @@ public class ParallelArraySum {
 	}
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		serialSum();
+		parallelStreamSum();
 		final int size = ARRAY_SIZE / CORES ;
 		List<FutureTask<Long>> futures = 
 				   new ArrayList<>();
