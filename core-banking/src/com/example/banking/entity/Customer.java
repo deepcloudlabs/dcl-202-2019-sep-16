@@ -1,5 +1,6 @@
 package com.example.banking.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +9,8 @@ import java.util.Optional;
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
-public class Customer {
+@SuppressWarnings("serial")
+public class Customer implements Serializable {
 	private final String identityNo;
 	private String fullName;
 	private List<Account> accounts;

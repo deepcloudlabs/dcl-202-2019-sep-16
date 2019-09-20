@@ -1,5 +1,6 @@
 package com.example.banking.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +13,8 @@ import com.example.banking.service.TransferService;
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
-public final class Bank implements TransferService {
+@SuppressWarnings("serial")
+public final class Bank implements TransferService,Serializable {
 	private final int id;
 	private String name;
 	private List<Customer> customers;

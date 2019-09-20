@@ -1,10 +1,13 @@
 package com.example.banking.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
-public class Account {
+@SuppressWarnings("serial")
+public class Account implements Serializable{
 	// attribute, field, state
 	// instance variable
 	private static int numOfAccounts;
