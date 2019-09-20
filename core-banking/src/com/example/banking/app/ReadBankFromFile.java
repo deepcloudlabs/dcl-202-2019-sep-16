@@ -1,5 +1,6 @@
 package com.example.banking.app;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -18,8 +19,10 @@ public class ReadBankFromFile {
 			File file = new File("c:/tmp","garanti.dat");
 			try(FileInputStream fis = 
 					new FileInputStream(file);
+				BufferedInputStream bis = 
+					new BufferedInputStream(fis);
 			ObjectInputStream ois = 
-					new ObjectInputStream(fis);
+					new ObjectInputStream(bis);
 			){
 				Bank garanti = (Bank) ois.readObject();
 				System.out.println("Total balance : "
