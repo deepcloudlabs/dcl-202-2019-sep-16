@@ -13,7 +13,7 @@ import java.util.concurrent.FutureTask;
 public class ParallelArraySum {
 	private static final int CORES =  
 			 Runtime.getRuntime().availableProcessors();
-	private static final int ARRAY_SIZE = 10_000_000;
+	private static final int ARRAY_SIZE = 2_000_000_000;
 	private static final int[] array =
 			new int[ARRAY_SIZE];
 	// static block
@@ -21,7 +21,16 @@ public class ParallelArraySum {
 		for (int i=0;i<ARRAY_SIZE;++i)
 			array[i]= i;
 	}
+	public static void serialSum() {
+		long begin = System.currentTimeMillis();
+		long sum =0;
+		for (int num : array)
+			sum += num;
+		long end = System.currentTimeMillis();
+		System.out.println("sum: "+sum+" @ "+(end-begin));		
+	}
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
+		serialSum();
 		final int size = ARRAY_SIZE / CORES ;
 		List<FutureTask<Long>> futures = 
 				   new ArrayList<>();
